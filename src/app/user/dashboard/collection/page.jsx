@@ -11,14 +11,14 @@ export const Page = async () => {
       user_email: user.email,
     },
   });
-  const malId = collection.map(value => value.anime_mal_id)
+
   return (
     <div>
       <div className="flex flex-col px-4">
         <div className="">
           <Header title={"Collection"} />
         </div>
-        <CollectionsAnime collection={malId}/>
+        <CollectionsAnime collection={collection}/>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { apiLibraries } from '@/libraries/apiLibs'
 import authSession from '@/libraries/authSession'
 import Image from 'next/image'
 import prisma from '@/libraries/prisma'
+import { Comment } from '@/components/AnimeList/Comment'
 
 export const Page = async({params}) => {
     const response = await params
@@ -17,7 +18,6 @@ export const Page = async({params}) => {
             anime_mal_id: anime.mal_id
         }
     })
-    console.info(collection)
 
     return (
             <div className='min-w-full max-h-screen'>
@@ -26,7 +26,7 @@ export const Page = async({params}) => {
                         <h1 className='font-bold text-xl text-main-secondary'>
                             {anime.title}
                         </h1>
-                        {!collection && user && <CollectionButton anime_mal_id={anime.mal_id} user_email={user?.email}/>}
+                        {!collection && user && <CollectionButton anime_mal_id={anime.mal_id} user_email={user?.email} anime_image={anime.images.webp.image_url} anime_title={anime.title}/>}
                     </div>
                     <div className='flex flex-wrap'>
                     <div className='sm:mr-4 sm:w-64 h-96 w-96 border-4 md:w-72 border-main-border rounded-xl overflow-hidden my-3 shadow-md shadow-main-border'>
@@ -40,7 +40,7 @@ export const Page = async({params}) => {
                     </div>
                         <div className='text-lg mb-3 sm:text-sm sm:w-80 self-center lg:mx-auto xl:mx-auto md:mx-auto sm:mx-auto w-96 font-semibold md:w-96 md:text-lg text-main-secondary'>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-2 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-2 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Episode
                             </p>
                             <span className='p-1 px-3 text-md w-72'>
@@ -48,7 +48,7 @@ export const Page = async({params}) => {
                             </span>
                             </div>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Duration
                             </p>
                             <span className='p-1 px-3 text-md w-72'>
@@ -56,7 +56,7 @@ export const Page = async({params}) => {
                             </span>
                             </div>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Score 
                             </p>
                             <span className='p-1 px-3 text-md w-72'>
@@ -64,7 +64,7 @@ export const Page = async({params}) => {
                             </span>
                             </div>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Rank 
                             </p>
                                 <span className='p-1 px-3 text-md w-72'>
@@ -72,7 +72,7 @@ export const Page = async({params}) => {
                                 </span>
                                 </div>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Rating 
                             </p>
                             <span className='p-1 px-3 text-md w-72'>
@@ -80,7 +80,7 @@ export const Page = async({params}) => {
                             </span>
                             </div>
                             <div className='flex'>
-                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-primary rounded-lg my-1 shadow-lg'>
+                            <p className='w-28 p-1 sm:px-1 px-3 border-2 border-main-accent bg-main-background rounded-lg my-1 shadow-lg'>
                             Status
                             </p>
                             <span className='p-1 px-3 text-md w-72'>
@@ -95,6 +95,7 @@ export const Page = async({params}) => {
                          : {anime.synopsis}
                         </p>
                     </div>
+                    <Comment/>
                 </div>
                 <VideoPlayer youtubeId={anime.trailer.youtube_id}/>
             </div>
