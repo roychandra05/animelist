@@ -8,7 +8,7 @@ export const AnimeList = ({ api }) => {
         {api.data?.map((anime, i) => {
           return (
             <Link href={`/anime/${anime.mal_id}`} key={i}>
-              <div className="border-4 border-main-border text-center h-full rounded-xl overflow-hidden shadow-lg hover:border-main-black transition-all duration-200 ease">
+              <div className="border-4 border-main-secondary text-center h-full rounded-xl overflow-hidden shadow-lg hover:border-main-accent transition-all duration-200 ease">
                 <Image
                   src={anime.images.webp.image_url}
                   alt="..."

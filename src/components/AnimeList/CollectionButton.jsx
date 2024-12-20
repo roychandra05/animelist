@@ -2,7 +2,12 @@
 import { useState } from "react";
 import React from "react";
 
-export const CollectionButton = ({ anime_mal_id, user_email, anime_image, anime_title }) => {
+export const CollectionButton = ({
+  anime_mal_id,
+  user_email,
+  anime_image,
+  anime_title,
+}) => {
   const [isCreated, setIsCreated] = useState(false);
 
   const handleCollection = async (event) => {
@@ -22,8 +27,8 @@ export const CollectionButton = ({ anime_mal_id, user_email, anime_image, anime_
   return (
     <>
       {isCreated ? (
-        <p className="text-lg text-main-shadow">Successfully Addedd</p>) 
-        : (
+        <p className="text-lg text-main-shadow">Successfully Addedd</p>
+      ) : (
         <button
           className="border-2 border-main-secondary shadow-lg rounded-lg px-2 bg-main-accent text-main-shadow drop-shadow-lg hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
           onClick={handleCollection}

@@ -3,7 +3,7 @@ import { Eye, EyeClosed, XCircle } from "@phosphor-icons/react";
 import { useState } from "react";
 import YouTube from "react-youtube";
 export const VideoPlayer = ({ youtubeId }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const option = {
     width: "300",
     heigh: "250",
@@ -14,9 +14,9 @@ export const VideoPlayer = ({ youtubeId }) => {
 
   const Player = () => {
     return (
-      <div className="fixed bottom-2 right-2">
+      <div className="fixed bottom-2 right-2" >
         <button
-          className="float-right text-main-accent border-2 rounded-lg"
+          className="float-right text-main-accent border-2 rounded-lg bg-main-secondary"
           onClick={handleVideoPlayer}
         >
           <Eye size={32} />
@@ -34,7 +34,7 @@ export const VideoPlayer = ({ youtubeId }) => {
     return (
       <div className="fixed bottom-2 right-2">
         <button
-          className="float-right text-main-accent border-2 rounded-lg"
+          className="float-right text-main-accent border-2 rounded-lg bg-main-secondary"
           onClick={handleVideoPlayer}
         >
           <EyeClosed size={32} />
