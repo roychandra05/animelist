@@ -3,17 +3,20 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const Comment = ({ anime_mal_id, user_email, username, anime_title }) => {
-  const [comment, setComment] = useState("");
+  const [validComment, setValidComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
 
   const router = useRouter()
 
   const inputComment = (event) => {
-    setComment(event.target.value);
+    setValidComment(event.target.value);
   };
 
   const handleComment = async (event) => {
     event.preventDefault();
+    const comment = validComment.trim()
+    if(comment.length < 3 ) return;
+    
     const data = { anime_mal_id, user_email, comment, username, anime_title};
 
     const response = await fetch("/api/v1/comment", {
@@ -23,7 +26,7 @@ export const Comment = ({ anime_mal_id, user_email, username, anime_title }) => 
     const dataComment = await response.json();
     if (dataComment.isCreate) {
       setIsCreated((prev) => (prev = true));
-      setComment((prev) => (prev = ""));
+      setValidComment((prev) => (prev = ""));
       router.refresh()
     }
   };
@@ -44,7 +47,7 @@ export const Comment = ({ anime_mal_id, user_email, username, anime_title }) => 
         <textarea
           className="p-2 text-lg bg-main-background border-2 border-main-accent text-main-shadow rounded-b-lg"
           placeholder="🐱💬..."
-          value={comment}
+          value={validComment}
           onChange={inputComment}
         />
         <button

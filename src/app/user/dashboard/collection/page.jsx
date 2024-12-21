@@ -14,7 +14,7 @@ export const Page = async () => {
 
   return (
     <div>
-      <div className="flex flex-col px-4">
+      <div className="flex flex-col">
         <div className="">
           <Header title={"Collection"} />
         </div>

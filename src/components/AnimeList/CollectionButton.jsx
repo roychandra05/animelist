@@ -25,7 +25,7 @@ export const CollectionButton = ({
   };
 
   return (
-    <>
+    <div className="my-2">
       {isCreated ? (
         <p className="text-lg text-main-shadow">Successfully Addedd</p>
       ) : (
@@ -36,7 +36,7 @@ export const CollectionButton = ({
           Add to Collections
         </button>
       )}
-    </>
+    </div>
   );
 };
 export default CollectionButton;

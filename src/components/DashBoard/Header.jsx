@@ -12,7 +12,7 @@ export const Header = ({title}) => {
     }
     
   return (
-    <div className='flex justify-between text-main-accent items-center text-xl font-bold'>
+    <div className='flex justify-between text-main-accent items-center text-xl font-bold px-4'>
         <button className="my-3" onClick={handleBack}>
         <ArrowCircleLeft size={33} />
         </button>

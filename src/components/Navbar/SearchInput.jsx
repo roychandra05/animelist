@@ -23,15 +23,15 @@ export const SearchInput = () => {
   };
 
   return (
-    <div className="h-1/2 p-3 flex items-center relative">
+    <div className="h-1/2 p-3 flex justify-center items-center w-36 relative md:w-auto lg:w-auto sm:w-auto xl:w-80 2xl:w-96">
       <input
         type="text"
         placeholder="search ..."
-        className="text-black rounded-lg h-8 p-2"
+        className="text-black rounded-lg h-8 p-2 w-36 md:w-auto lg:w-auto sm:w-full xl:w-full 2xl:w-full"
         ref={searchRef}
         onKeyUp={searchAnime}
       />
-      <button className=" absolute top-2 right-5" onClick={searchAnime}>
+      <button className=" absolute md:top-2 sm:top-2 right-5" onClick={searchAnime}>
         <MagnifyingGlass />
       </button>
     </div>
