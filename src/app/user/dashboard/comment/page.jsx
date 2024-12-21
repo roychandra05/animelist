@@ -11,27 +11,36 @@ export const Page = async () => {
       username: user.name,
     },
   });
-  console.info(response);
 
   return (
-    <section> 
-    <Header title={"Collection"} />
-      <h1 className="text-2xl font-bold text-main-secondary  px-4">
-        Your Comments :
-      </h1>
-      <div className="p-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {response.map((anime, i) => {
-          return (
-            <Link href={`/anime/${anime.id}`}
-              key={i} 
-              className="w-full overflow-auto bg-main-secondary border-4 border-main-accent my-2 rounded-r-xl rounded-bl-xl p-2 drop-shadow-lg"
-            >
-              <p className="font-light italic mb-2">-{anime.anime_title}</p>
-              <p className="">{anime.comment}</p>
-            </Link>
-          );
-        })}
-      </div>
+    <section>
+      {response.length ? (
+        <>
+          <Header title={"Collection"} />
+          <h1 className="text-2xl font-bold text-main-secondary  px-4">
+            Your Comments :
+          </h1>
+          <div className="p-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {response.map((anime, i) => {
+              return (
+                <Link
+                  href={`/anime/${anime.id}`}
+                  key={i}
+                  className="w-full overflow-auto bg-main-secondary border-4 border-main-accent my-2 rounded-r-xl rounded-bl-xl p-2 drop-shadow-lg"
+                >
+                  <p className="font-light italic mb-2">-{anime.anime_title}</p>
+                  <p className="">{anime.comment}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <section className="">
+          <Header title={"Collection"} />
+        <div className="text-2xl font-bold text-main-accent mx-auto w-2/4 text-center my-52">Comment is Empty</div>
+        </section>
+      )}
     </section>
   );
 };
